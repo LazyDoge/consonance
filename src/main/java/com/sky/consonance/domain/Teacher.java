@@ -1,8 +1,23 @@
 package com.sky.consonance.domain;
 
-public class Teacher {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-    private long id;
+import javax.persistence.*;
+import java.util.Set;
 
-    private String fullName;
+@Entity
+@Table
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Teacher extends User{
+
+    @ManyToMany
+    @JoinTable(
+            name = "teacher_student",
+            joinColumns = {@JoinColumn(name = "teacher_id")},
+            inverseJoinColumns = {@JoinColumn(name = "student_id")}
+    )
+    private Set<Student> students;
+
 }
