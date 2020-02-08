@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="formDisciplene" th:action="@{/admin/discipline}" method="post">
+    <div class="input-group">
+        <input type="text" autocomplete="off"
+               id="name" name="name" class="form-control" autofocus/>
+        <input type="number" id="costPerHour" name="costPerHour" />
+        <button type="submit">Add</button>
+    </div>
+</form>
+
+<table id="disciplineTable" class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Cost</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="discipline, rowStat: ${disciplines}"
+        th:style="${rowStat.odd} ? 'color: gray' : 'color: black;'">
+        <td th:text="${discipline.id}"></td>
+        <td th:text="${discipline.name}"></td>
+        <td th:text="${discipline.costPerHour}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
