@@ -2,11 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Consonance</title>
+    <script th:inline="javascript">
+        let disciplines = [# th:utext="${disciplines}" /];
+    </script>
 </head>
 <body>
+<h3>Consonance</h3>
+<div id="app"></div>
+<script th:src="${true} ? 'http://localhost:8000/main.js' : '/js/main.js'">
 
+</script>
 </body>
-<script th:src="http://localhost:8000/main.js"></script>
-
 </html>
